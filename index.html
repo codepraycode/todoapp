@@ -23,7 +23,7 @@
               </span>
             </div>
 
-            <form class="task form__input">
+            <form class="task form__input" id="taskInput">
                 <input type="text" name="new_task" />
             </form>
         </section>
@@ -34,44 +34,19 @@
 
 
         <section class="task-items">
-            <div class="task__group">
 
-                <div class="task" data-completed="true">
-                    <p>Completed online Javascript course</p>
-                </div>
-
-                <div class="task" data-completed="false">
-                    <p>Jog around the park 3x</p>
-                </div>
-
-                <div class="task" data-completed="false">
-                    <p>10 minutes meditation</p>
-                </div>
-
-                <div class="task" data-completed="false">
-                    <p>Read for 1 hour</p>
-                </div>
-
-                <div class="task" data-completed="false">
-                    <p>Pick up groceries</p>
-                </div>
-
-                <div class="task" data-completed="false">
-                    <p>Complete Todo App on Frontend Mentor</p>
-                </div>
-
-            </div>
+            <div class="task__group" data-task_lists></div>
 
             <div class="task__actions">
                 <span>5 items left</span>
 
                 <div class="links">
-                    <a href="#" class="active">All</a>
-                    <a href="#">Active</a>
-                    <a href="#">Completed</a>
+                    <a href="#" class="active" data-filter--all>All</a>
+                    <a href="#" data-filter--undone>Active</a>
+                    <a href="#" data-filter--completed>Completed</a>
                 </div>
 
-                <a href="#">Clear Completed </a>
+                <a href="#" data-filter--clear>Clear Completed </a>
             </div>
         </section>
 

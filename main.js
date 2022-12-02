@@ -1,81 +1,147 @@
-import './scss/style.scss'
-import { setupCounter } from './lib/counter.js'
-import javascriptLogo from './lib/javascript.svg';
+import './scss/style.scss';
+
+const print = console.log;
+// Filters
+const undone_filter = document.querySelector('[data-filter--undone]');
+const all_filter = document.querySelector('[data-filter--all]');
+const completed_filter = document.querySelector('[data-filter--completed]');
 
 
-const viteLink = document.createElement('a');
-viteLink.setAttribute('href', "https://vitejs.dev");
-viteLink.setAttribute('target', "_blank");
+const todos = [{
+        id: 1,
+        task: "Completed online Javascript course",
+        completed: true
+    },
+    {
+        id: 2,
+        task: "Jog around the park 3x",
+        completed: false
+    },
+    {
+        id: 3,
+        task: "10 minutes meditation",
+        completed: false
+    },
+    {
+        id: 4,
+        task: "Read for 1 hour",
+        completed: false
+    },
+    {
+        id: 5,
+        task: "Pick up groceries",
+        completed: false
+    },
+    {
+        id: 6,
+        task: "Complete Todo App on Frontend Mentor",
+        completed: false
+    },
+]
 
-const viteLogo = document.createElement('img');
-viteLogo.setAttribute("src", "/vite.svg");
-viteLogo.setAttribute("alt", "Vite logo");
-viteLogo.classList.add('logo');
-
-viteLink.append(viteLogo);
-
-
-
-const jsLink = document.createElement('a');
-jsLink.setAttribute('href', "https://developer.mozilla.org/en-US/docs/Web/JavaScript");
-jsLink.setAttribute('target', "_blank");
-
-const jsLogo = document.createElement('img');
-jsLogo.setAttribute("src", javascriptLogo);
-jsLogo.setAttribute("alt", "JavaScript logo");
-jsLogo.classList.add(`logo`);
-jsLogo.classList.add(`vanilla`);
-
-
-const heading = document.createElement('h1');
-heading.textContent = "Hello Vite"
-
-
-const buttonGroup = document.createElement('div');
-buttonGroup.classList.add('card');
-
-const button = document.createElement('button');
-button.setAttribute('id', "counter");
-button.setAttribute('type', "button");
-
-const docsLink = document.createElement('p');
-docsLink.classList.add("read-the-docs");
-docsLink.innerText = "Click on the Vite logo to learn more";
-
-viteLink.append(viteLogo);
-jsLink.append(jsLogo);
-buttonGroup.append(button);
+window.onload = (e) => {
+    // Run function when the browser loads
+    // renderTodos();
 
 
+    const taskInputForm = document.getElementById("taskInput");
+    all_filter.click();
+
+    // print(taskInputForm);
+    taskInputForm.onsubmit = (e) => {
+        e.preventDefault();
+
+        // console.log(e.form);
+
+        const enteredTask = document.querySelector("[name='new_task']").value;
+
+        print(enteredTask);
+    };
+}
 
 
-const container = document.createElement('div');
 
-container.appendChild(viteLink);
-container.appendChild(jsLink);
-container.appendChild(heading);
-container.appendChild(buttonGroup);
-container.appendChild(docsLink);
+const todoListContainer = document.querySelector('[data-task_lists]');
 
-document.querySelector("#app").append(container);
+const renderTodos = (keyword) => {
+
+    let content = '';
+
+    // filter content based on keyword
+    let filteredTodo = todos;
+
+    if (keyword === 'active') filteredTodo = todos.filter((t) => !t.completed);
+    else if (keyword === 'completed') filteredTodo = todos.filter((t) => t.completed);
 
 
-// document.querySelector('#app').innerHTML = `
-//   <div>
-//     <a href="https://vitejs.dev" target="_blank">
-//       <img src="/vite.svg" class="logo" alt="Vite logo" />
-//     </a>
-//     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-//       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-//     </a>
-//     <h1>Hello Vite!</h1>
-//     <div class="card">
-//       <button id="counter" type="button"></button>
-//     </div>
-//     <p class="read-the-docs">
-//       Click on the Vite logo to learn more
-//     </p>
-//   </div>
-// `
+    filteredTodo.forEach((each) => {
+        content += `
 
-setupCounter(document.querySelector('#counter'))
+        <div class="task" data-completed=${each.completed ? 'true': 'false'}>
+            <p>${each.task}</p>
+        </div>
+
+        `
+    });
+
+    todoListContainer.innerHTML = content;
+
+
+}
+
+
+
+
+const updateActiveFilter = (keyword) => {
+
+    // keyword is either -> all, active, completed
+
+    if (keyword === 'all') {
+        all_filter.classList.add('active');
+    } else {
+        all_filter.classList.remove('active');
+    }
+
+    if (keyword === 'active') {
+        undone_filter.classList.add('active');
+    } else {
+        undone_filter.classList.remove('active');
+    }
+
+    if (keyword === 'completed') {
+        completed_filter.classList.add('active');
+    } else {
+        completed_filter.classList.remove('active');
+    }
+}
+
+undone_filter.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    renderTodos('active');
+    updateActiveFilter('active');
+
+})
+
+all_filter.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    renderTodos('all');
+    updateActiveFilter('all');
+});
+
+completed_filter.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    renderTodos('completed');
+    updateActiveFilter('completed');
+});
+
+
+// Clear
+const clear_completed = document.querySelector('[data-filter--clear]');
+clear_completed.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    print("Clear completed");
+});
