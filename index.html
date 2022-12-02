@@ -12,77 +12,84 @@
     <header>
         <!-- Place the title theme switch, and task input here -->
 
-        <div class="header__title">
-            <h1>Todo</h1>
+        <section class="header__content">
+
+            <div class="header__content--title">
+                <h1>Todo</h1>
 
 
-            <span>
-            <img src="/images/icon-moon.svg" alt="Theme switcher" title="Change theme"/>
-          </span>
-        </div>
+                <span>
+                <img src="/images/icon-moon.svg" alt="Theme switcher" title="Change theme"/>
+              </span>
+            </div>
 
-        <form class="task form__input">
-            <input type="text" name="new_task" />
-        </form>
+            <form class="task form__input">
+                <input type="text" name="new_task" />
+            </form>
+        </section>
 
     </header>
 
     <main>
 
-        <section class="task__group">
 
-            <div class="task" data-completed="true">
-                <p>Completed online Javascript course</p>
+        <section class="task-items">
+            <div class="task__group">
+
+                <div class="task" data-completed="true">
+                    <p>Completed online Javascript course</p>
+                </div>
+
+                <div class="task" data-completed="false">
+                    <p>Jog around the park 3x</p>
+                </div>
+
+                <div class="task" data-completed="false">
+                    <p>10 minutes meditation</p>
+                </div>
+
+                <div class="task" data-completed="false">
+                    <p>Read for 1 hour</p>
+                </div>
+
+                <div class="task" data-completed="false">
+                    <p>Pick up groceries</p>
+                </div>
+
+                <div class="task" data-completed="false">
+                    <p>Complete Todo App on Frontend Mentor</p>
+                </div>
+
             </div>
 
-            <div class="task" data-completed="false">
-                <p>Jog around the park 3x</p>
+            <div class="task__actions">
+                <span>5 items left</span>
+
+                <div class="links">
+                    <a href="#" class="active">All</a>
+                    <a href="#">Active</a>
+                    <a href="#">Completed</a>
+                </div>
+
+                <a href="#">Clear Completed </a>
             </div>
-
-            <div class="task" data-completed="false">
-                <p>10 minutes meditation</p>
-            </div>
-
-            <div class="task" data-completed="false">
-                <p>Read for 1 hour</p>
-            </div>
-
-            <div class="task" data-completed="false">
-                <p>Pick up groceries</p>
-            </div>
-
-            <div class="task" data-completed="false">
-                <p>Complete Todo App on Frontend Mentor</p>
-            </div>
-
-        </section>
-
-
-        <section class="task__actions">
-            <span>5 items left</span>
-
-            <div class="links">
-                <a href="#">All</a>
-                <a href="#">Active</a>
-                <a href="#">Completed</a>
-            </div>
-
-            <a href="#">Clear Completed </a>
         </section>
 
     </main>
 
 
     <footer>
-        <span class="info">
-        Drag and drop to reorder list
-      </span>
 
-        <span class="attribution">
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-        <br/>
-        Coded by <a href="#">Your Name Here</a>.
-      </span>
+        <section>
+            <span class="info">
+            Drag and drop to reorder list
+          </span>
+
+            <span class="attribution">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+            Coded by <a href="#">codepraycode</a>.
+          </span>
+        </section>
     </footer>
 
 

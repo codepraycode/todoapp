@@ -1,0 +1,119 @@
+@use './variables' as *;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+:root {
+    font-family: $font-fm;
+    font-size: $font-sz;
+    // line-height: 24px;
+    font-weight: $fw-400;
+    // color-scheme: light dark;
+    // 
+    // font-synthesis: none;
+    // text-rendering: optimizeLegibility;
+    // -webkit-font-smoothing: antialiased;
+    // -moz-osx-font-smoothing: grayscale;
+    // -webkit-text-size-adjust: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: $light-grayish-blue;
+    background-color: $very-light-gray;
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    font-weight: 500;
+    color: $dark-grayish-blue;
+    text-decoration: none;
+    font-weight: inherit;
+    &:active,
+    &.active {
+        color: $bright-blue;
+    }
+    &:hover {
+        color: $very-dark-grayish-blue
+    }
+}
+
+header,
+main,
+footer {
+    padding-inline: 30%;
+}
+
+header {
+    height: 50vh;
+    background-image: url('/images/bg-desktop-light.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    // background-color: red;
+    margin: 0;
+    position: relative;
+    top: -26px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    color: white;
+    .header__title {
+        // background: green;
+        margin-top: 13%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.task {
+    display: block;
+    width: 100%;
+    background-color: $white;
+    padding: 1rem 1rem;
+    border-radius: .3rem;
+    position: relative;
+    &::before {
+        content: "";
+        // position: absolute;
+        width: 40px;
+        height: 40px;
+        margin-right: 2rem;
+        border: 1px solid $light-grayish-blue;
+        border-radius: 20px;
+    }
+}
+
+// h1 {
+//     font-size: 3.2em;
+// }
+//     line-height: 1.1;
+// .logo {
+//     height: 6em;
+//     padding: 1.5em;
+//     will-change: filter;
+// }
+// .logo:hover {
+//     filter: drop-shadow(0 0 2em #646cffaa);
+// }
+// .logo.vanilla:hover {
+//     filter: drop-shadow(0 0 2em #f7df1eaa);
+// }
+// @media (prefers-color-scheme: light) {
+//      :root {
+//         color: #213547;
+//         background-color: #ffffff;
+//     }
+//     a:hover {
+//         color: #747bff;
+//     }
+//     button {
+//         background-color: #f9f9f9;
+//     }
+// }
