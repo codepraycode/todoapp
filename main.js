@@ -7,7 +7,7 @@ const all_filter = document.querySelector('[data-filter--all]');
 const completed_filter = document.querySelector('[data-filter--completed]');
 
 
-const todos = [{
+let todos = [{
         id: 1,
         task: "Completed online Javascript course",
         completed: true
@@ -39,6 +39,8 @@ const todos = [{
     },
 ]
 
+let filter = 'all';
+
 window.onload = (e) => {
     // Run function when the browser loads
     // renderTodos();
@@ -57,21 +59,30 @@ window.onload = (e) => {
 
         print(enteredTask);
     };
+
+
+    document.querySelectorAll('[data-cancel]').forEach((each) => {
+
+        each.addEventListener('click', (e) => {
+            let todoId = parseInt(e.target.dataset.cancel_id);
+            removeTodo(todoId);
+        })
+    })
 }
 
 
 
 const todoListContainer = document.querySelector('[data-task_lists]');
 
-const renderTodos = (keyword) => {
+const renderTodos = () => {
 
     let content = '';
 
     // filter content based on keyword
     let filteredTodo = todos;
 
-    if (keyword === 'active') filteredTodo = todos.filter((t) => !t.completed);
-    else if (keyword === 'completed') filteredTodo = todos.filter((t) => t.completed);
+    if (filter === 'active') filteredTodo = todos.filter((t) => !t.completed);
+    else if (filter === 'completed') filteredTodo = todos.filter((t) => t.completed);
 
 
     filteredTodo.forEach((each) => {
@@ -79,6 +90,8 @@ const renderTodos = (keyword) => {
 
         <div class="task" data-completed=${each.completed ? 'true': 'false'}>
             <p>${each.task}</p>
+
+            <span data-cancel_id="${each.id}"></span>
         </div>
 
         `
@@ -91,24 +104,23 @@ const renderTodos = (keyword) => {
 
 
 
-
-const updateActiveFilter = (keyword) => {
+const updateActiveFilter = () => {
 
     // keyword is either -> all, active, completed
 
-    if (keyword === 'all') {
+    if (filter === 'all') {
         all_filter.classList.add('active');
     } else {
         all_filter.classList.remove('active');
     }
 
-    if (keyword === 'active') {
+    if (filter === 'active') {
         undone_filter.classList.add('active');
     } else {
         undone_filter.classList.remove('active');
     }
 
-    if (keyword === 'completed') {
+    if (filter === 'completed') {
         completed_filter.classList.add('active');
     } else {
         completed_filter.classList.remove('active');
@@ -118,23 +130,29 @@ const updateActiveFilter = (keyword) => {
 undone_filter.addEventListener('click', (e) => {
     e.preventDefault();
 
-    renderTodos('active');
-    updateActiveFilter('active');
+    filter = 'active';
+    updateActiveFilter();
+    renderTodos();
+
 
 })
 
 all_filter.addEventListener('click', (e) => {
     e.preventDefault();
 
-    renderTodos('all');
-    updateActiveFilter('all');
+
+    filter = 'all';
+    updateActiveFilter();
+    renderTodos();
+
 });
 
 completed_filter.addEventListener('click', (e) => {
     e.preventDefault();
 
-    renderTodos('completed');
-    updateActiveFilter('completed');
+    filter = 'completed';
+    updateActiveFilter();
+    renderTodos();
 });
 
 
@@ -143,5 +161,13 @@ const clear_completed = document.querySelector('[data-filter--clear]');
 clear_completed.addEventListener('click', (e) => {
     e.preventDefault();
 
-    print("Clear completed");
+
+    todos = todos.filter((t) => !t.completed);
+    renderTodos();
 });
+
+
+const removeTodo = (todoId) => {
+    todos = todos.filter((t) => t.id !== todoId);
+    renderTodos();
+}

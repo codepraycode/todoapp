@@ -163,7 +163,7 @@ h1 {
             background-size: 50%;
             // border-color: transparent;
         }
-        &::after {
+        & span {
             content: "";
             width: 14px;
             height: 14px;
@@ -192,7 +192,7 @@ h1 {
             &::before {
                 border-color: $checkbox-background;
             }
-            &::after {
+            & span {
                 visibility: visible;
             }
         }
