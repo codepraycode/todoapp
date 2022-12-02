@@ -1,0 +1,75 @@
+@use './variables' as *;
+@media screen and (max-width:$mobile--breakpoint) {
+    section {
+        margin: 0 2rem !important;
+    }
+    header {
+        height: 36vh;
+        // 
+        background-image: url('/images/bg-mobile-light.jpg');
+        // 
+    }
+    h1 {
+        letter-spacing: .7rem;
+        font-size: 1.5rem;
+    }
+    .task {
+        padding: .8rem 1rem;
+        // 
+        &::before {
+            margin-right: 1rem;
+        }
+    }
+    .task__group {
+        .task {
+            // 
+            p {
+                margin-right: auto;
+                cursor: pointer;
+                color: $very-dark-grayish-blue;
+                font-size: .85rem;
+            }
+            // 
+            &::before {
+                background-size: 55%;
+            }
+            &::after {
+                margin-right: .1rem;
+            }
+        }
+    }
+    .task__actions {
+        // background-color: red;
+        margin-top: .3rem;
+        padding: 1rem;
+        position: relative;
+        .links {
+            box-shadow: $shadow;
+            border-radius: .3rem;
+            position: absolute;
+            bottom: -4rem;
+            right: 0rem;
+            background: $white !important;
+            width: 100%;
+            padding: .9rem;
+            justify-content: center;
+        }
+    }
+    footer {
+        position: relative;
+        top: 2rem;
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            span {
+                display: block;
+                font-size: .9rem;
+            }
+            .attribution {
+                margin-top: 1.5rem;
+                font-size: .55rem;
+            }
+        }
+    }
+}
