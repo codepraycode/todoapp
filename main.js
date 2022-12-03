@@ -70,6 +70,16 @@ function trackTodos() {
         let todoId = parseInt(e.target.dataset.cancel_id);
         removeTodo(todoId);
     }));
+
+
+    const todoItems = document.querySelectorAll('[data-todo_index]');
+
+    todoItems.forEach((each) => each.addEventListener('click', (e) => {
+
+        let todoIndex = parseInt(e.target.dataset.todo_index);
+
+        updateTodo(todoIndex);
+    }));
 }
 
 
@@ -87,11 +97,11 @@ const renderTodos = () => {
     else if (filter === 'completed') filteredTodo = todos.filter((t) => t.completed);
 
 
-    filteredTodo.forEach((each) => {
+    filteredTodo.forEach((each, index) => {
         content += `
 
         <div class="task" data-completed=${each.completed ? 'true': 'false'}>
-            <p>${each.task}</p>
+            <p data-todo_index="${index}">${each.task}</p>
 
             <span data-cancel_id="${each.id}"></span>
         </div>
@@ -101,6 +111,9 @@ const renderTodos = () => {
 
     todoListContainer.innerHTML = content;
     trackTodos();
+
+
+    document.querySelector("[data--indicator]").innerHTML = `${filteredTodo.length} item${filteredTodo.length > 1 ? 's':''} left`;
 
 
 }
@@ -171,9 +184,12 @@ clear_completed.addEventListener('click', (e) => {
 
 
 const removeTodo = (todoId) => {
-    console.log(todoId);
     todos = todos.filter((t) => t.id !== todoId);
     renderTodos();
+}
 
 
+const updateTodo = (todoIndex) => {
+    todos[todoIndex].completed = !todos[todoIndex].completed;
+    renderTodos();
 }
