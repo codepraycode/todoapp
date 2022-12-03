@@ -11,6 +11,10 @@ const completed_filter = document.querySelector('[data-filter--completed]');
 let filter = 'all';
 let todos = loadFromStore();
 
+if (!Boolean(todos.length)) {
+    todos = saveToStore(null);
+}
+
 window.onload = (e) => {
     // Run function when the browser loads
     // renderTodos();

@@ -35,13 +35,15 @@ const initialTodos = [{
 ]
 
 
-export const saveToStore = (data) => { // receives the key of the local storage and an initial value
+export const saveToStore = (data = null) => { // receives the key of the local storage and an initial value
 
 
-    // if (localStorage.getItem(KEY) === null) { // item not present in local storage
+    if (data === null && localStorage.getItem(KEY) === null) { // item not present in local storage
+        localStorage.setItem(KEY, toString(initialTodos)) // initialize local storage with initial value    
+    } else {
+        localStorage.setItem(KEY, toString(data)) // initialize local storage with initial value
+    }
 
-    // }
-    localStorage.setItem(KEY, toString(data)) // initialize local storage with initial value
 
     const saved = toObj(localStorage.getItem(KEY)) // convert to object
 
