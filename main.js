@@ -55,9 +55,18 @@ window.onload = (e) => {
 
         // console.log(e.form);
 
-        const enteredTask = document.querySelector("[name='new_task']").value;
+        const enteredTask = document.querySelector("[name='new_task']");
 
-        print(enteredTask);
+        const task = enteredTask.value;
+
+        todos.push({
+            id: todos.length > 0 ? todos.length + 1 : 1,
+            task,
+            completed: false
+        });
+
+        renderTodos();
+        enteredTask.value = '';
     };
 
 }
@@ -101,9 +110,11 @@ const renderTodos = () => {
         content += `
 
         <div class="task" data-completed=${each.completed ? 'true': 'false'}>
+            <span class="checker" data-todo_index="${index}"></span>
+
             <p data-todo_index="${index}">${each.task}</p>
 
-            <span data-cancel_id="${each.id}"></span>
+            <span class="canceler" data-cancel_id="${each.id}"></span>
         </div>
 
         `

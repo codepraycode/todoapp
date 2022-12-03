@@ -16,7 +16,7 @@
     .task {
         padding: .8rem 1rem;
         // 
-        &::before {
+        & .checker {
             margin-right: 1rem;
         }
     }
@@ -30,10 +30,10 @@
                 font-size: .85rem;
             }
             // 
-            &::before {
+            & .checker {
                 background-size: 55%;
             }
-            &::after {
+            & .canceler {
                 margin-right: .1rem;
             }
         }
