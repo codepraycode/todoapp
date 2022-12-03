@@ -1,4 +1,5 @@
 import './scss/style.scss';
+import { loadFromStore, saveToStore } from './store';
 
 const print = console.log;
 // Filters
@@ -7,39 +8,8 @@ const all_filter = document.querySelector('[data-filter--all]');
 const completed_filter = document.querySelector('[data-filter--completed]');
 
 
-let todos = [{
-        id: 1,
-        task: "Completed online Javascript course",
-        completed: true
-    },
-    {
-        id: 2,
-        task: "Jog around the park 3x",
-        completed: false
-    },
-    {
-        id: 3,
-        task: "10 minutes meditation",
-        completed: false
-    },
-    {
-        id: 4,
-        task: "Read for 1 hour",
-        completed: false
-    },
-    {
-        id: 5,
-        task: "Pick up groceries",
-        completed: false
-    },
-    {
-        id: 6,
-        task: "Complete Todo App on Frontend Mentor",
-        completed: false
-    },
-]
-
 let filter = 'all';
+let todos = loadFromStore();
 
 window.onload = (e) => {
     // Run function when the browser loads
@@ -64,6 +34,8 @@ window.onload = (e) => {
             task,
             completed: false
         });
+
+        todos = saveToStore(todos);
 
         renderTodos();
         enteredTask.value = '';
@@ -197,18 +169,22 @@ clear_completed.addEventListener('click', (e) => {
     e.preventDefault();
 
 
-    todos = todos.filter((t) => !t.completed);
+    todos = saveToStore(todos.filter((t) => !t.completed));
     renderTodos();
 });
 
 
 const removeTodo = (todoId) => {
-    todos = todos.filter((t) => t.id !== todoId);
+
+
+    todos = saveToStore(todos.filter((t) => t.id !== todoId));
+
     renderTodos();
 }
 
 
 const updateTodo = (todoIndex) => {
     todos[todoIndex].completed = !todos[todoIndex].completed;
+    todos = saveToStore(todos);
     renderTodos();
 }
