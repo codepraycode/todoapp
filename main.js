@@ -60,14 +60,16 @@ window.onload = (e) => {
         print(enteredTask);
     };
 
+}
 
-    document.querySelectorAll('[data-cancel]').forEach((each) => {
+function trackTodos() {
+    const cancels = document.querySelectorAll('[data-cancel_id]');
 
-        each.addEventListener('click', (e) => {
-            let todoId = parseInt(e.target.dataset.cancel_id);
-            removeTodo(todoId);
-        })
-    })
+    cancels.forEach((each) => each.addEventListener('click', (e) => {
+
+        let todoId = parseInt(e.target.dataset.cancel_id);
+        removeTodo(todoId);
+    }));
 }
 
 
@@ -98,6 +100,7 @@ const renderTodos = () => {
     });
 
     todoListContainer.innerHTML = content;
+    trackTodos();
 
 
 }
@@ -168,6 +171,9 @@ clear_completed.addEventListener('click', (e) => {
 
 
 const removeTodo = (todoId) => {
+    console.log(todoId);
     todos = todos.filter((t) => t.id !== todoId);
     renderTodos();
+
+
 }
