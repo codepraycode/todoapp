@@ -90,7 +90,9 @@ const renderTodos = () => {
         content += `
 
         <div class="task" data-completed=${each.completed ? 'true': 'false'}>
-            <span class="checker" data-todo_index="${index}"></span>
+            <span class="checker" data-todo_index="${index}">
+                <img src="/images/icon-check.svg" alt="checker"/>
+            </span>
 
             <p data-todo_index="${index}">${each.task}</p>
 

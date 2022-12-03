@@ -4,15 +4,20 @@ body {
     background-color: $very-light-gray;
     color: $light-grayish-blue;
     a {
-        color: $dark-grayish-blue;
-        &:not(.active):hover,
-        &:not(:active):hover {
-            color: $very-dark-grayish-blue;
+        &:active,
+        &.active {
+            color: $bright-blue !important;
+        }
+        &:not(.active),
+        &:not(:active) {
+            color: $dark-grayish-blue;
+            &:hover {
+                color: $very-dark-grayish-blue;
+            }
             // font-weight: $fw-700;
         }
     }
     header {
-        // background-image: url('/images/bg-desktop-light.jpg');
         //
         background-image: url('/images/bg-desktop-light.jpg');
         color: $white;
@@ -54,10 +59,12 @@ body[data-theme="dark"] {
     background-color: $very-dark-gray;
     color: $light-grayish-blue--dark-mode;
     a {
-        color: $dark-grayish-blue--dark-mode;
-        &:not(.active):hover,
-        &:not(:active):hover {
-            color: $light-grayish-blue-hover--dark-mode;
+        &:not(.active),
+        &:not(:active) {
+            color: $dark-grayish-blue--dark-mode;
+            &:hover {
+                color: $light-grayish-blue-hover--dark-mode;
+            }
             // font-weight: $fw-700;
         }
     }
