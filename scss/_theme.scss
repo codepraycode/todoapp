@@ -1,11 +1,8 @@
 @use './variables' as *;
 //
-//
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: $very-light-gray;
-        color: $light-grayish-blue;
-    }
+body {
+    background-color: $very-light-gray;
+    color: $light-grayish-blue;
     a {
         color: $dark-grayish-blue;
         &:not(.active):hover,
@@ -17,6 +14,7 @@
     header {
         // background-image: url('/images/bg-desktop-light.jpg');
         //
+        background-image: url('/images/bg-desktop-light.jpg');
         color: $white;
         input {
             color: $very-dark-grayish-blue;
@@ -51,11 +49,10 @@
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: $very-dark-gray;
-        color: $light-grayish-blue--dark-mode;
-    }
+//
+body[data-theme="dark"] {
+    background-color: $very-dark-gray;
+    color: $light-grayish-blue--dark-mode;
     a {
         color: $dark-grayish-blue--dark-mode;
         &:not(.active):hover,
@@ -65,7 +62,7 @@
         }
     }
     header {
-        // background-image: url('/images/bg-mobile-light.jpg');
+        background-image: url('/images/bg-desktop-dark.jpg');
         color: $white;
         #theme-cog {
             background-image: url('/images/icon-sun.svg');
@@ -101,27 +98,18 @@
     }
 }
 
-@media (max-width:$mobile--breakpoint) and (prefers-color-scheme: light) {
-    header {
-        background-image: url('/images/bg-mobile-light.jpg');
+//
+@media (max-width:$mobile--breakpoint) {
+    body[data-theme="dark"] {
+        header {
+            background-image: url('/images/bg-mobile-dark.jpg');
+            background-size: auto;
+        }
     }
-}
-
-@media (max-width:$mobile--breakpoint) and (prefers-color-scheme: dark) {
-    header {
-        background-image: url('/images/bg-mobile-dark.jpg');
-        background-size: auto;
-    }
-}
-
-@media screen and (prefers-color-scheme: dark) {
-    header {
-        background-image: url('/images/bg-desktop-dark.jpg');
-    }
-}
-
-@media screen and (prefers-color-scheme: light) {
-    header {
-        background-image: url('/images/bg-desktop-light.jpg');
+    body {
+        header {
+            background-image: url('/images/bg-mobile-light.jpg');
+            background-size: auto;
+        }
     }
 }

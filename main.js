@@ -69,6 +69,14 @@ window.onload = (e) => {
         enteredTask.value = '';
     };
 
+
+    document.getElementById("theme-cog").addEventListener('click', (e) => {
+        const prev = document.body.dataset.theme;
+
+        document.body.dataset.theme = prev === "light" ? "dark" : "light";
+
+    })
+
 }
 
 function trackTodos() {
