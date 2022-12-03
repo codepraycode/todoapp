@@ -47,7 +47,7 @@ export const saveToStore = (data = null) => { // receives the key of the local s
 
     const saved = toObj(localStorage.getItem(KEY)) // convert to object
 
-    return saved;
+    return saved || [];
 }
 
 
@@ -60,5 +60,5 @@ export const loadFromStore = () => { // receives the key of the local storage an
 
     const saved = toObj(localStorage.getItem(KEY)) // convert to object
 
-    return saved;
+    return saved || [];
 }
