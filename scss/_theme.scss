@@ -1,0 +1,127 @@
+@use './variables' as *;
+//
+//
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: $very-light-gray;
+        color: $light-grayish-blue;
+    }
+    a {
+        color: $dark-grayish-blue;
+        &:not(.active):hover,
+        &:not(:active):hover {
+            color: $very-dark-grayish-blue;
+            // font-weight: $fw-700;
+        }
+    }
+    header {
+        // background-image: url('/images/bg-desktop-light.jpg');
+        //
+        color: $white;
+        input {
+            color: $very-dark-grayish-blue;
+        }
+        #theme-cog {
+            background-image: url('/images/icon-moon.svg');
+        }
+    }
+    .task {
+        background-color: $white;
+        & .checker {
+            border-color: $light-grayish-blue;
+            ;
+        }
+    }
+    .task-items {
+        background-color: $white;
+        box-shadow: $shadow;
+    }
+    .task__group {
+        .task {
+            border-color: $very-light-grayish-blue;
+            p {
+                color: $very-dark-grayish-blue;
+            }
+            &[data-completed="true"] {
+                p {
+                    color: $light-grayish-blue;
+                }
+            }
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: $very-dark-gray;
+        color: $light-grayish-blue--dark-mode;
+    }
+    a {
+        color: $dark-grayish-blue--dark-mode;
+        &:not(.active):hover,
+        &:not(:active):hover {
+            color: $light-grayish-blue-hover--dark-mode;
+            // font-weight: $fw-700;
+        }
+    }
+    header {
+        // background-image: url('/images/bg-mobile-light.jpg');
+        color: $white;
+        #theme-cog {
+            background-image: url('/images/icon-sun.svg');
+        }
+    }
+    .task {
+        background-color: $very-dark-desaturated-blue;
+        border-color: $very-dark-grayish-blue--dark-mode;
+        color: $light-grayish-blue--dark-mode;
+        & .checker {
+            border-color: $very-dark-grayish-blue-alt--dark-mode;
+        }
+        input {
+            color: inherit;
+        }
+        p {
+            color: inherit;
+        }
+        &[data-completed="true"] {
+            p {
+                color: $dark-grayish-blue--dark-mode;
+            }
+        }
+    }
+    .task-items {
+        background-color: $very-dark-desaturated-blue;
+    }
+    .task__actions {
+        color: $dark-grayish-blue--dark-mode;
+    }
+    footer {
+        color: $dark-grayish-blue--dark-mode;
+    }
+}
+
+@media (max-width:$mobile--breakpoint) and (prefers-color-scheme: light) {
+    header {
+        background-image: url('/images/bg-mobile-light.jpg');
+    }
+}
+
+@media (max-width:$mobile--breakpoint) and (prefers-color-scheme: dark) {
+    header {
+        background-image: url('/images/bg-mobile-dark.jpg');
+        background-size: auto;
+    }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    header {
+        background-image: url('/images/bg-desktop-dark.jpg');
+    }
+}
+
+@media screen and (prefers-color-scheme: light) {
+    header {
+        background-image: url('/images/bg-desktop-light.jpg');
+    }
+}

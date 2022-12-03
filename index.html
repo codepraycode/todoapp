@@ -18,12 +18,13 @@
                 <h1>Todo</h1>
 
 
-                <span>
-                <img src="/images/icon-moon.svg" alt="Theme switcher" title="Change theme"/>
+                <span id="theme-cog">
+                <!-- <img src="/images/icon-moon.svg" alt="Theme switcher" title="Change theme"/> -->
               </span>
             </div>
 
             <form class="task form__input" id="taskInput">
+                <span class="checker" data-todo_index="${index}"></span>
                 <input type="text" name="new_task" autocomplete="off" />
             </form>
         </section>
