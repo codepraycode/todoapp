@@ -8,6 +8,7 @@
 - [Overview](#overview)
 - [Usage](#usage)
 - [Author](#author)
+- [Acknowledgement](#A)
 
 
 
@@ -27,6 +28,10 @@ Your users can:
 ## Usage
 
 This project can be accessed on a [live server](todoapp-codepraycode.vercel.app)
+
+## Acknowledgement
+
+Thanks to [Kyle from WebDevSimplified on youtube](https://github.com/WebDevSimplified) for the tutorial on [drag and drop](https://github.com/WebDevSimplified/Drag-And-Drop).
 
 ## Author
 
