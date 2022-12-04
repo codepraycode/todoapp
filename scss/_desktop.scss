@@ -111,6 +111,13 @@ h1 {
     border-radius: .3rem;
     // 
     position: relative;
+    //
+    &[draggable="true"] {
+        cursor: move;
+        &.dragging {
+            opacity: .5;
+        }
+    }
     // 
     & .checker {
         content: "";
